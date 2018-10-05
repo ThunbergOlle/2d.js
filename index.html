@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>2d.js</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="game"></div>
+
+        <button onclick="move()">move</button>
+        <script src="./page/index.js"></script>
+        <script>
+            let sprite = new Sprite(10, 10, 100, 100,'./page/sprite.png', false, 3);
+            
+            move = () => {
+                sprite.move(10, 10);
+            }
+            sprite.render();
+
+            console.log(sprite);
+        </script>
+    </body>
+</html>
