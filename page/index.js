@@ -14,20 +14,6 @@ class Game {
         gamediv.style.backgroundColor = backgroundColor;
     }
 }
-class HpBar {
-    constructor() {
-        this.maxhp = 100;
-        this.minhp = 0;
-        this.currenthp = 100;
-        this.god = false;
-    }
-
-    remove(hp) {
-        if (!this.god) {
-            this.currenthp -= hp;
-        }
-    }
-}
 class Sprite {
     constructor(x, y, h, w, src) {
         this.x = x;
@@ -38,13 +24,19 @@ class Sprite {
 
         this.img = 0;
 
+        
+        this.alive = true;
+        this.hp = 100;
+        
         this.player = false;
         this.steps = 10;
         this.static = false;
         this.input = 'wasd';
     }
 
+
     render() {
+        document.getElementById("hp").innerHTML = this.hp;
         this.img = document.createElement("img");
         this.img.src = this.src;
         this.img.style.position = 'absolute';
@@ -63,23 +55,17 @@ class Sprite {
     }
 
     moveForce(x, y) {
-        console.log("MOVE");
-        if (!this.static) {
+        if (!this.static && this.alive) {
             console.log(this.static);
             this.x += x;
             this.y += y;
 
             this.img.style.left = this.x + 'px';
-            console.log(this.img);
         }
     }
     move() {
-        if (!this.static && this.input === 'wasd' && this.player === true) {
-            if (document.onkeydown = 37) {
-                console.log("123");
-            }
+        if (!this.static && this.input === 'wasd' && this.player === true && this.alive) {
             let input = (key) => {
-                console.log(key);
                 let parseWidth = gamediv.style.width.toString();
                 parseWidth = parseWidth.replace("px", "");
                 let parseHeight = gamediv.style.height.toString();
@@ -110,5 +96,18 @@ class Sprite {
 
         }
 
+    }
+    die () {
+        this.alive = false;
+        this.img = undefined;
+    }
+    updatehp(hp) {
+        this.hp += hp;
+        console.log(this.hp);
+        document.getElementById("hp").innerHTML = this.hp;
+        if(this.hp < 0){
+            this.alive = false;
+            this.img.style.visibility = "hidden";
+        }
     }
 }

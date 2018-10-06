@@ -12,26 +12,21 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div id="game"></div>
+        <div id="game">
+            <p id="hp">50</p>
+        </div>
 
-        <button onclick="move()">move</button>
+        <button onclick="skeleton.updatehp(-20);">Remove hp</button>
         <script src="./page/index.js"></script>
         <script>
-        //  let skeleton = new Sprite(startingX, startingY, height, width, src)
             let skeleton = new Sprite(150, 300, 100, 100,'./page/sprite.png');
-        //  let game = new Game(height, width);
             let game = new Game(500, 500);
-        //  game.init(backgroundImageURL, backgroundcolor)
             game.init(null, '#008000');
 
-            //DEFINES if it's the main player
+            
             skeleton.player = true;
-            //Renders the skeleton
             skeleton.render();
-            //Makes so it's able to move around with the arrow keys.
             skeleton.move();
-
-            console.log(skeleton);
         </script>
     </body>
 </html>
