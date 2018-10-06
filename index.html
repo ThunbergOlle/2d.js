@@ -17,14 +17,21 @@
         <button onclick="move()">move</button>
         <script src="./page/index.js"></script>
         <script>
-            let sprite = new Sprite(10, 10, 100, 100,'./page/sprite.png', false, 3);
-            
-            move = () => {
-                sprite.move(10, 10);
-            }
-            sprite.render();
+        //  let skeleton = new Sprite(startingX, startingY, height, width, src)
+            let skeleton = new Sprite(150, 300, 100, 100,'./page/sprite.png');
+        //  let game = new Game(height, width);
+            let game = new Game(500, 500);
+        //  game.init(backgroundImageURL, backgroundcolor)
+            game.init(null, '#008000');
 
-            console.log(sprite);
+            //DEFINES if it's the main player
+            skeleton.player = true;
+            //Renders the skeleton
+            skeleton.render();
+            //Makes so it's able to move around with the arrow keys.
+            skeleton.move();
+
+            console.log(skeleton);
         </script>
     </body>
 </html>
