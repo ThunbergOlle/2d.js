@@ -1,4 +1,4 @@
-const gamediv = document.getElementById('game');
+const gamecanvas = document.getElementById('game');
 
 class Game {
     constructor(w, h) {
@@ -14,6 +14,7 @@ class Game {
         gamediv.style.backgroundColor = backgroundColor;
     }
 }
+
 class Sprite {
     constructor(x, y, h, w, src) {
         this.x = x;
